@@ -52,10 +52,18 @@ public class Login extends AppCompatActivity {
                             attempt.setText(Integer.toString(attempt_counter));
                             if(attempt_counter==0)
                                 login_button.setEnabled(false);
+
+                            Retrofit retrofit = new Retrofit.Builder()
+                                    .baseUrl("https://api.github.com/")
+                                    .build();
+
+                            GitHubService service = retrofit.create(GitHubService.class);
                         }
                     }
                 }
         );
+
+        Call<List<Repo>> repos = service.listRepos("octocat");
     }
 
 

@@ -21,10 +21,12 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         avatar = (ImageView)findViewById(R.id.avatar);
         Picasso.with(getApplicationContext().load("url_image").into(avatar));
         ButterKnife.bind(this);
         mButton.setOnClickListener(this);
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
