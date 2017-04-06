@@ -33,16 +33,16 @@ public class LoginActivity extends ActionBarActivity {
 
         button.setOnClickListener(new Button.OnClickListener() {
             public void onClick(View v) {
-                 Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").into(imageView)
+                 Picasso.with(getBaseContext()).load("http://adartza.iutbayonne.univ-pau.fr/~mvcrisostomo/Avatars/public/avatar").into(imageView)
                 .load(imageView)
                 .fit().centerInside()
                 .into(imageView);
 
-        ButterKnife.bind(this);
-        mButton.setOnClickListener(this);
+                ButterKnife.bind(this);
+                mButton.setOnClickListener(this);
             }
 
-        Retrofit retrofit = new Retrofit.Builder()
+                Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://adartza.iutbayonne.univ-pau.fr/~mvcrisostomo/Avatars/public/api/v1/avatar/alejandrovc.2194@gmail.com")
                 .build();
 
