@@ -13,12 +13,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import retrofit2.Retrofit;
+
+import static android.R.attr.button;
+
 
 public class LoginActivity extends ActionBarActivity {
 
     ImageView imageView;
-    ImageView avatar;
-    @BindView(R.id.Button)
+
     Button mButton;
 
     @Override
@@ -28,14 +31,16 @@ public class LoginActivity extends ActionBarActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
 
 
-        public void
-        Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").into(imageView)
+        button.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                 Picasso.with(getBaseContext()).load("http://i.imgur.com/DvpvklR.png").into(imageView)
                 .load(imageView)
                 .fit().centerInside()
                 .into(imageView);
 
         ButterKnife.bind(this);
         mButton.setOnClickListener(this);
+            }
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://adartza.iutbayonne.univ-pau.fr/~mvcrisostomo/Avatars/public/api/v1/avatar/alejandrovc.2194@gmail.com")
