@@ -7,17 +7,24 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ScrollView;
 
-public class UserActivity extends AppCompatActivity {
-
+public class UserActivity extends AppCompatActivity implements View.OnClickListener{
+    ImageView avatar;
+    @BindView(R.id.Button)
+    Button mButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        avatar = (ImageView)findViewById(R.id.avatar);
+        Picasso.with(getApplicationContext().load("url_image").into(avatar));
+        ButterKnife.bind(this);
+        mButton.setOnClickListener(this);
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,36 +39,8 @@ public class UserActivity extends AppCompatActivity {
 
 }
 
-                            CONFIGURER
 
-
-
---------------------------BUTTERKNIFE (affichage de la vue)------------------------------
-
-class ExampleActivity extends Activity {
-    @BindView(R.id.title) TextView title;
-    @BindView(R.id.subtitle) TextView subtitle;
-    @BindView(R.id.footer) TextView footer;
-
-    @Override public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.simple_activity);
-        ButterKnife.bind(this);
-        // TODO Use fields...
-    }
-};
-
-----------------------------PICASSO (Appeler l'image)--------------------------------------
-
-Picasso.with(context).load("http://i.imgur.com/DvpvklR.png").into(imageView);
-
-
-        Interface publique GitHubService {
-        @GET ("utilisateurs / {utilisateur} / repos")
-        Appelez <List <Repo >> listRepos (@Path ("user") String user);
-        }
-
------------------------------RETROFIT(Appelerl'API)---------------------------------------------
+-----------------------------RETROFIT(Appeler l'API)---------------------------------------------
 
 @GET("user")
 Call<User> getUser(@Header("Authorization") String authorization)
